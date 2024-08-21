@@ -22,7 +22,8 @@ class UserResource extends JsonResource
             'phone' => '('.$this->phone->prefix.') '.$this->phone->phone_number,
             'pets' => $this->pets,
             'roles' => $this->roles,
-            'phoneSim' => $this->phoneSim
+            'phoneSim' => $this->phoneSim,
+            'veterinaryVisit' => $this->veterinaryVisit
         ]);
     }
 }

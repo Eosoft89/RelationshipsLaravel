@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -70,5 +71,10 @@ class User extends Authenticatable
     public function phoneSim() : HasOneThrough
     {
         return $this->hasOneThrough(Sim::class, Phone::class); // Si no se respeta la convención de nombres, se deben llenar los ID extras
+    }
+
+    public function veterinaryVisit() : HasManyThrough
+    {
+        return $this->hasManyThrough(VeterinaryVisit::class, Pet::class);
     }
 }
