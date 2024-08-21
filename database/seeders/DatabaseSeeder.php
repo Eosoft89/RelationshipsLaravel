@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             SimSeeder::class,
             VeterinaryVisitSeeder::class,
-            ImageSeeder::class
+            ImageSeeder::class,
+            TagSeeder::class
         ]);
     }
 }

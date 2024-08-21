@@ -24,7 +24,8 @@ class UserResource extends JsonResource
             'roles' => $this->roles,
             'phoneSim' => $this->phoneSim,
             'veterinaryVisit' => $this->veterinaryVisit,
-            'image' => $this->image
+            'image' => $this->image,
+            'tags' => $this->tags
         ]);
     }
 }

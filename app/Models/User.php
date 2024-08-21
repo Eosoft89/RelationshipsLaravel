@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -80,10 +81,16 @@ class User extends Authenticatable
         return $this->hasManyThrough(VeterinaryVisit::class, Pet::class);
     }
 
-    //relación polimórfica, un usuario tiene una imagen, pero la clase imagen también puede ser utilizada por la clase Post
-
+    //Relación polimórfica, un usuario tiene una imagen, pero la clase imagen también puede ser utilizada por la clase Post
+    //Si el usuario tuviese asociada más de una imagen, se debe utilizar MorphMany en vez de MorphOne
     public function image() : MorphOne
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    //Relación muchos a muchos polimórfica, en este caso, un usario puede tener muchos tags, pero también pueden hacer uso de tag los videos (y cualquier otra clase/tabla)
+    public function tags() : MorphToMany
+    {
+        return $this->morphToMany(Tag::class, 'taggable'); // la clase usuario se relaciona con la clase tag mediante la tabla 'taggable'
     }
 }

@@ -16,6 +16,14 @@
     {{-- Obtenido desde relación polimórfica, la tabla image puede ser utilizada tanto por 'User' como por 'Post' --}}
     <h2>{{ $user->image->url }}</h2>
 
+    {{-- Obtenido desde relación polimórfica muchos a muchos, la tabla Tag puede ser utilizada tanto por 'User' como por 'Video'. La relación ocurre mediante la tabla 'taggable' --}}
+    <h3>Tags:</h3>
+    <ul>
+        @foreach ($user->tags as $tag)
+            <li>{{ $tag->name }}</li>
+        @endforeach
+    </ul>
+
     <h2>Mascotas: </h2>
     <ul>
     @foreach ($user->pets as $pet)  {{-- Ahora puedo llamar toda la colección de mascotas del usuario --}}
