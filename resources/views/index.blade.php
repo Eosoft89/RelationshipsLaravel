@@ -13,6 +13,9 @@
     {{-- Ahora puedo acceder a los datos del teléfono a través de la relación del usuario --}}
     <h3> Número: ({{ $user->phone->prefix }}) {{ $user->phone->phone_number }}</h3>
 
+    {{-- Obtenido desde relación polimórfica, la tabla image puede ser utilizada tanto por 'User' como por 'Post' --}}
+    <h2>{{ $user->image->url }}</h2>
+
     <h2>Mascotas: </h2>
     <ul>
     @foreach ($user->pets as $pet)  {{-- Ahora puedo llamar toda la colección de mascotas del usuario --}}

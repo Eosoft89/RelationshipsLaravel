@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class, 
             PhoneSeeder::class,
             PetSeeder::class,
-            RoleSeeder::class
+            RoleSeeder::class,
+            SimSeeder::class,
+            VeterinaryVisitSeeder::class,
+            ImageSeeder::class
         ]);
     }
 }

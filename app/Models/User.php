@@ -9,12 +9,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -76,5 +78,12 @@ class User extends Authenticatable
     public function veterinaryVisit() : HasManyThrough
     {
         return $this->hasManyThrough(VeterinaryVisit::class, Pet::class);
+    }
+
+    //relación polimórfica, un usuario tiene una imagen, pero la clase imagen también puede ser utilizada por la clase Post
+
+    public function image() : MorphOne
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }
