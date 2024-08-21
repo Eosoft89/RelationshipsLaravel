@@ -21,6 +21,13 @@
     @endforeach
     </ul>
 
+    <h3>Visitas al veterinario:</h3>
+    <ul>
+    @foreach ($user->veterinaryVisit as $visit)
+    <li>{{ $visit->veterinary_name }}, {{ $visit->veterinary_center }}, {{ $visit->visit_date }}.</li>    
+    @endforeach
+    </ul>
+
     <h2>Roles: </h2>
     <ul>
         @foreach ($user->roles as $role)
